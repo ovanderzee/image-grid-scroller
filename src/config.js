@@ -1,38 +1,18 @@
-const config = {
-  api_key: '980b06a4493f051d32e73dc5af2f56bc',
-  user_id: '192338942@N04',
-  contact_ids: '66956608@N06 - Flickr',
-  app_id: '72157718495764908',
-  gallery_id: '72157647277042064',
-  explorer: 'flickr.galleries.getPhotos',
-  format: 'json',
+const gallery = {
+  path: 'https://www.flickr.com/services/rest/',
+  search: {
+    method: 'flickr.galleries.getPhotos',
+    api_key: '980b06a4493f051d32e73dc5af2f56bc',
+    gallery_id: '66911286-72157647277042064',
+    format: 'json',
+    nojsoncallback: '1',
+  },
+  //photoUrl: `https://live.staticflickr.com/${server}/${id}_${secret}_${size}.jpg`
 }
 
-export {config}
+export {gallery}
+
 /*
-X Sign call as onno35 with full permissions?
-question
-https://www.flickr.com/services/api/render?method=flickr.galleries.getPhotos&api_key=980b06a4493f051d32e73dc5af2f56bc&gallery_id=72157647277042064&format=json&nojsoncallback=1&auth_token=72157718495412031-120cf732fe911d73&api_sig=c0f75c7116cd0b87cd150705872af6b3
-reply
-<style>body{color:#black;} span.q{color:#FF0084;} span.ns{color:#0259C4; font-weight:bold;} span.n{color:#666666;} span.at{font-weight:bold;}</style><pre>{ "stat": "fail", "code": 98, "message": "Invalid auth token" }</pre>
-
-https://www.flickr.com/services/api/render?
-method=flickr.galleries.getPhotos&
-api_key=980b06a4493f051d32e73dc5af2f56bc&
-gallery_id=72157647277042064&
-format=json&
-nojsoncallback=1&
-auth_token=72157718495412031-120cf732fe911d73&
-api_sig=c0f75c7116cd0b87cd150705872af6b3
-
-
-
-X Sign call with no user token?
-question:
-https://www.flickr.com/services/api/render?method=flickr.galleries.getPhotos&api_key=980b06a4493f051d32e73dc5af2f56bc&gallery_id=72157647277042064&format=json&nojsoncallback=1&api_sig=de881d0d1f3779aa55a35f0d1ac3a4c0
-reply
-<style>body{color:#black;} span.q{color:#FF0084;} span.ns{color:#0259C4; font-weight:bold;} span.n{color:#666666;} span.at{font-weight:bold;}</style><pre>{ "stat": "fail", "code": 96, "message": "Invalid signature" }</pre>
-
 X Do not sign call
 question
 https://www.flickr.com/services/api/render?method=flickr.galleries.getPhotos&api_key=980b06a4493f051d32e73dc5af2f56bc&gallery_id=72157647277042064&format=json&nojsoncallback=1
