@@ -1,5 +1,14 @@
 # image-grid-scroller
 
+Approach:
+- choose framework; vue3
+- install vue3 in repository and see HelloWorld working
+- study the flickr API
+- use the flickr-API and see output in the framework
+- implement tiles, these became 240px * 240px
+- achieve the Goals and the Specifications
+- clean up and document, last critical look
+
 ## Project setup
 ```
 npm install

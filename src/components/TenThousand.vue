@@ -7,7 +7,9 @@
   <section v-if="count">
     <h2>{{photos.length}} Colors of Nature</h2>
     <figure v-for="photo in photos" v-bind:key="photo">
-      <img :src="photo.url" />
+      <div class="tile">
+        <img :src="photo.url" />
+      </div>
       <figcaption>{{photo.title}}</figcaption>
     </figure>
   </section>
@@ -89,11 +91,22 @@ section {
 }
 figure {
   display: inline-block;
+  height: 280px;
   width: 240px;
   margin: 1em;
   vertical-align: top;
 }
+figure .tile {
+  position: relative;
+  width: 240px;
+  height: 240px;
+  background: #f5f5f5;
+}
 figure img {
-  max-height: 240px
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  max-width: 100%;
+  max-height: 100%;
 }
 </style>
