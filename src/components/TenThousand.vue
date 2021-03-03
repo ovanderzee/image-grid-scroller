@@ -5,35 +5,40 @@
     </button>
   </form>
   <section v-if="count">
-    <p
+    <ImageCell
       v-for="photo in photos"
+      v-bind:photo="photo"
       v-bind:key="photo.id"
-    >
-      {{photo.title}}
-    </p>
+    />
   </section>
 </template>
 
 <script>
-import {gallery} from "../config"
+import { gallery } from "../config"
+import ImageCell from "./ImageCell.vue";
 
 export default {
   name: "TenThousand",
+  components: {
+    ImageCell,
+  },
   data () {
     return {
       count: 0,
+      buildFetchUrl: () => {
+        const searchPart = []
+        Object.keys(gallery.search).forEach(prop => {
+          searchPart.push(`${prop}=${gallery.search[prop]}`)
+        })
+        return `${gallery.path}?${searchPart.join('&')}`
+      },
     }
   },
   methods: {
     fetchGallery () {
-      const searchPart = []
-      Object.keys(gallery.search).forEach(prop => {
-        searchPart.push(`${prop}=${gallery.search[prop]}`)
-      })
-      const getPhotosUrl = `${gallery.path}?${searchPart.join('&')}`
+      const getPhotosUrl = this.buildFetchUrl()
       fetch(getPhotosUrl)
         .then(response => {
-          console.log('response', response)
           return response.json()
         })
         .then(
