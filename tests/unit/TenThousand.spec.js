@@ -34,6 +34,6 @@ describe("TenThousand.vue", () => {
   it("processes data", () => {
     wrapper.componentVM.showPhotos(flickrGalleryResponse)
     expect(wrapper.componentVM.count).not.toBe(0);
-    expect(wrapper.componentVM.photos.length).toBe(13);
+    expect(wrapper.componentVM.photos.length).toBe(10000);
   });
 });

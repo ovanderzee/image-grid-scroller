@@ -5,7 +5,7 @@
     </button>
   </form>
   <section v-if="count">
-    <h2>Colors of Nature</h2>
+    <h2>{{photos.length}} Colors of Nature</h2>
     <figure v-for="photo in photos" v-bind:key="photo">
       <img :src="photo.url" />
       <figcaption>{{photo.title}}</figcaption>
@@ -54,6 +54,13 @@ export default {
       this.photos.forEach(photo => {
         photo.url = this.buildPhotoUrl(photo)
       })
+
+      // add more references
+      const max = 10000;
+      do {
+        this.photos = this.photos.concat(json.photos.photo)
+      } while (this.photos.length < max)
+      this.photos.splice(max, (this.photos.length - max));
     },
   }
 }
