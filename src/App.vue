@@ -1,6 +1,6 @@
 <template>
   <h1>Image Grid Scroller</h1>
-  <h2>door Onno van der Zee</h2>
+  <h3>door Onno van der Zee</h3>
   <TenThousand />
 </template>
 

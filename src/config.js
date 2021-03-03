@@ -7,10 +7,13 @@ const gallery = {
     format: 'json',
     nojsoncallback: '1',
   },
-  //photoUrl: `https://live.staticflickr.com/${server}/${id}_${secret}_${size}.jpg`
 }
 
-export {gallery}
+const photograph = {
+  path: 'https://live.staticflickr.com/'
+}
+
+export {gallery, photograph}
 
 /*
 X Do not sign call
