@@ -5,21 +5,24 @@
     </button>
   </form>
   <section v-if="count">
-    <h2>{{photos.length}} Colors of Nature</h2>
-    <figure v-for="photo in photos" v-bind:key="photo">
-      <div class="tile">
-        <img :src="photo.url" />
-      </div>
-      <figcaption>{{photo.title}}</figcaption>
-    </figure>
+	<h2>{{photos.length}} Colors of Nature</h2>
+    <ImageCell
+      v-for="photo in photos"
+      v-bind:photo="photo"
+      v-bind:key="photo.id"
+    />
   </section>
 </template>
 
 <script>
-import {gallery, photograph} from "../config"
+import { gallery } from "../config"
+import ImageCell from "./ImageCell.vue";
 
 export default {
   name: "TenThousand",
+  components: {
+    ImageCell,
+  },
   data () {
     return {
       count: 0,
@@ -30,10 +33,6 @@ export default {
         })
         return `${gallery.path}?${searchPart.join('&')}`
       },
-      buildPhotoUrl: (photo) => {
-        const path = `${photo.server}/${photo.id}_${photo.secret}_m.jpg`
-        return `${photograph.path}${path}`
-      }
     }
   },
   methods: {
@@ -53,9 +52,6 @@ export default {
     showPhotos (json) {
       this.count = json.photos.total
       this.photos = json.photos.photo
-      this.photos.forEach(photo => {
-        photo.url = this.buildPhotoUrl(photo)
-      })
 
       // add more references
       const max = 10000;
@@ -88,25 +84,5 @@ section {
   border-top: 4px solid yellowgreen;
   max-width: calc(1200px + 12em);
   margin: .5em auto;
-}
-figure {
-  display: inline-block;
-  height: 280px;
-  width: 240px;
-  margin: 1em;
-  vertical-align: top;
-}
-figure .tile {
-  position: relative;
-  width: 240px;
-  height: 240px;
-  background: #f5f5f5;
-}
-figure img {
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
-  max-width: 100%;
-  max-height: 100%;
 }
 </style>
