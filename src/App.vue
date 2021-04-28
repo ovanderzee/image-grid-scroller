@@ -5,14 +5,14 @@
 </template>
 
 <script>
-import TenThousand from "./components/TenThousand.vue";
+import TenThousand from './components/TenThousand.vue'
 
 export default {
-  name: "App",
+  name: 'App',
   components: {
-    TenThousand
-  }
-};
+    TenThousand,
+  },
+}
 </script>
 
 <style>

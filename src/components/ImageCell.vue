@@ -1,27 +1,27 @@
 <template>
   <figure>
     <div class="tile">
-	  <img :src="buildPhotoUrl(photo)" />
+      <img :src="buildPhotoUrl(photo)" />
     </div>
-    <figcaption>{{photo.title}}</figcaption>
+    <figcaption>{{ photo.title }}</figcaption>
   </figure>
 </template>
 
 <script>
-import { photograph } from "../config"
+import { photograph } from '../config'
 
 export default {
-  name: "ImageCell",
-  data () {
+  name: 'ImageCell',
+  data() {
     return {
-      buildPhotoUrl: (photo) => {
+      buildPhotoUrl: photo => {
         const path = `${photo.server}/${photo.id}_${photo.secret}_m.jpg`
         return `${photograph.path}${path}`
       },
     }
   },
   props: {
-    photo: Object
+    photo: Object,
   },
 }
 </script>
